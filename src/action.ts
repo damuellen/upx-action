@@ -45,10 +45,6 @@ export async function run(): Promise<void> {
     const strip = core.getInput('strip') || 'true'
     const strip_args = core.getInput('strip_args')
 
-    if (!fs.existsSync(file)) {
-      core.setFailed(`⛔ File ${file} wasn't found.`)
-    }
-
     if (/true/i.test(strip)) {
       core.info('🏃 Running strip...')
       await exec.exec(`strip ${strip_args} ${file}`)
